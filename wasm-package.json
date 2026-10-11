@@ -1,0 +1,12 @@
+{
+    "name": "vidstreaming-player-wasm",
+    "version": "1.0.0",
+    "description": "WebAssembly player protection module",
+    "scripts": {
+        "build": "asc assembly/index.ts --outFile public/assets/wasm/player.wasm --bindings esm --optimize",
+        "build:debug": "asc assembly/index.ts --outFile public/assets/wasm/player.wasm --bindings esm --debug"
+    },
+    "devDependencies": {
+        "assemblyscript": "^0.27.0"
+    }
+}

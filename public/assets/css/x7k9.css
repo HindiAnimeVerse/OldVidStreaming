@@ -1,0 +1,353 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#player {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.jw-wrapper {
+    max-height: 100vh !important;
+}
+
+/* Progress bar on top of controls */
+.jw-slider-time.jw-slider-top {
+    position: absolute !important;
+    bottom: 100% !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: calc(100% - 24px) !important;
+    margin: 0 !important;
+    padding: 6px 0 !important;
+}
+
+/* State Screen */
+.state-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.state-icon {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.state-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: r1 1.2s linear infinite;
+}
+
+.state-ring:nth-child(2) {
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    border-top-color: rgba(255, 255, 255, 0.6);
+    animation-duration: 1.5s;
+    animation-direction: reverse;
+}
+
+.state-ring:nth-child(3) {
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    border-top-color: rgba(255, 255, 255, 0.3);
+    animation-duration: 2s;
+}
+
+@keyframes r1 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.state-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+}
+
+.state-center svg {
+    width: 100%;
+    height: 100%;
+    fill: #fff;
+    animation: p1 2s ease-in-out infinite;
+}
+
+@keyframes p1 {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.state-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+.state-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 2rem;
+    text-align: center;
+    max-width: 300px;
+    line-height: 1.5;
+}
+
+.state-progress {
+    width: 200px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.state-progress-bar {
+    height: 100%;
+    width: 30%;
+    background: #fff;
+    border-radius: 3px;
+    animation: b1 2s ease-in-out infinite;
+}
+
+@keyframes b1 {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(250%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.state-dots {
+    display: inline-flex;
+    gap: 4px;
+    margin-left: 4px;
+}
+
+.state-dots span {
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    animation: d1 1.4s ease-in-out infinite;
+}
+
+.state-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.state-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes d1 {
+
+    0%,
+    80%,
+    100% {
+        opacity: 0.3;
+    }
+
+    40% {
+        opacity: 1;
+    }
+}
+
+.file-ref {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    max-width: 80%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Script Blocked Warning */
+@keyframes sbPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes sbWave {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+@keyframes sbFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sbGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(220, 38, 38, 0.6);
+    }
+}
+
+#sb-warn {
+    display: flex;
+}
+
+#sb-warn .sb-icon {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sb-warn .sb-wave {
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(220, 38, 38, 0.4);
+    border-radius: 50%;
+    animation: sbWave 2s ease-out infinite;
+}
+
+#sb-warn .sb-wave:nth-child(2) {
+    border-color: rgba(220, 38, 38, 0.3);
+    animation-delay: 0.7s;
+}
+
+#sb-warn .sb-wave:nth-child(3) {
+    border-color: rgba(220, 38, 38, 0.2);
+    animation-delay: 1.4s;
+}
+
+#sb-warn .sb-svg {
+    animation: sbPulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.5));
+}
+
+#sb-warn .sb-title {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    animation: sbFadeUp 0.5s ease 0.1s backwards;
+}
+
+#sb-warn .sb-text {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    max-width: 280px;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    animation: sbFadeUp 0.5s ease 0.2s backwards;
+}
+
+#sb-warn #sb-btn {
+    display: inline-flex;
+    text-decoration: none;
+    padding: 0.7rem 1.5rem;
+    background: #dc2626;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    animation: sbFadeUp 0.5s ease 0.3s backwards, sbGlow 2s ease-in-out 0.5s infinite;
+}
+
+#sb-warn #sb-btn:hover {
+    transform: translateY(-2px);
+    background: #b91c1c;
+}
